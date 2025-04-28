@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Calculator</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .calculator {
+     
+      padding: 20px;
+      border-radius: 16px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      width: 320px;
+    }
+    .display {
+      background: #ebb1b1;
+      
+      font-size: 2em;
+      padding: 20px;
+      border-radius: 8px;
+      text-align: right;
+      margin-bottom: 20px;
+      overflow-x: auto;
+    }
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+    button {
+      font-size: 1.5em;
+      padding: 20px;
+      border: none;
+      border-radius: 8px;
+      
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button.operator {
+      
+      color: rgb(168, 92, 92);
+    }
+    button.equal {
+      
+      color: rgb(125, 57, 57);
+      grid-column: span 2;
+    }
+    button.clear {
+     
+      color: rgb(141, 85, 85);
+      grid-column: span 2;
+    }
+    button:hover {
+      background: #cbd5e1;
+    }
+  </style>
+</head>
+<body>
+
+<div class="calculator">
+  <div class="display" id="display">0</div>
+  <div class="buttons">
+    <button onclick="press('7')">7</button>
+    <button onclick="press('8')">8</button>
+    <button onclick="press('9')">9</button>
+    <button class="operator" onclick="press('/')">÷</button>
+
+    <button onclick="press('4')">4</button>
+    <button onclick="press('5')">5</button>
+    <button onclick="press('6')">6</button>
+    <button class="operator" onclick="press('*')">×</button>
+
+    <button onclick="press('1')">1</button>
+    <button onclick="press('2')">2</button>
+    <button onclick="press('3')">3</button>
+    <button class="operator" onclick="press('-')">−</button>
+
+    <button onclick="press('0')">0</button>
+  
+    <button class="equal" onclick="calculate()">=</button>
+    <button class="operator" onclick="press('+')">+</button>
+
+    
+  </div>
+</div>
+
+<script>
+let expression = '';
+
+function press(value) {
+  if (expression.length >= 20) return; // Limit input length
+  if (document.getElementById('display').innerText === "0" && value !== ".") {
+    expression = value;
+  } else {
+    expression += value;
+  }
+  document.getElementById('display').innerText = expression;
+}
+
+function calculate() {
+  try {
+    const result = eval(expression);
+    expression = result.toString();
+    document.getElementById('display').innerText = expression;
+  } catch {
+    document.getElementById('display').innerText = "Error";
+    expression = '';
+  }
+}
+
+</script>
+
+</body>
+</html>
