@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cookie & SessionStorage Demo</title>
+  <link rel="stylesheet" type="test/css" href="style.css">
+  <script src="script.js"></script>
+  
+</head>
+<body>
+  <h2>Cookies</h2>
+  <input id="cookieKey" placeholder="Cookie name">
+  <input id="cookieValue" placeholder="Cookie value">
+  <button onclick="setCookieHandler()">Set Cookie</button>
+  <button onclick="getCookieHandler()">Get Cookie</button>
+  <button onclick="deleteCookieHandler()">Delete Cookie</button>
+  <p id="cookieResult"></p>
+
+  <hr>
+
+  <h2>Session Storage</h2>
+  <input id="sessionKey" placeholder="Session key">
+  <input id="sessionValue" placeholder="Session value">
+  <button onclick="setSessionHandler()">Set Session</button>
+  <button onclick="getSessionHandler()">Get Session</button>
+  <button onclick="removeSessionHandler()">Remove Session</button>
+  <p id="sessionResult"></p>
+
+
+</body>
+</html>

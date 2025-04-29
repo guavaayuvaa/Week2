@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <title>Hm</title>
+    </head>
+    <body>
+        <script>
+   
+function triggerErrors() {
+    const scenarios = [
+      () => { 
+        nonExistentFunction();
+      },
+  
+      () => { 
+        let x = null;
+        x(); 
+      },
+  
+      () => {
+        eval('foo bar');
+      },
+  
+      () => { 
+        let arr = new Array(-1);
+      },
+  
+      () => { 
+        decodeURIComponent('%');
+      },
+  
+      () => { 
+        throw new Error("This is a custom error.");
+      }
+    ];
+  
+    scenarios.forEach((fn, index) => {
+      try {
+        console.log(`\n--- Scenario ${index + 1} ---`);
+        fn();
+      } catch (error) {
+        console.error(`Caught ${error.name}: ${error.message}`);
+        console.error("Stack Trace:");
+        console.error(error.stack);
+      }
+    });
+  }
+  
+  triggerErrors();
+  </script>
+  </body>
+</html>
