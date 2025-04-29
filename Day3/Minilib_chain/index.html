@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    </head>
+    <body>
+    <script>
+        class Chainable {
+  constructor(data) {
+    this.data = data;
+  }
+  map(fn) {
+    this.data = this.data.map(fn);
+    return this;
+  }
+  filter(fn) {
+    this.data = this.data.filter(fn);
+    return this;
+  }
+  reduce(fn, initialValue) {
+    this.data = this.data.reduce(fn, initialValue);
+    return this;
+  }
+  value() {
+    return this.data;
+  }
+}
+function chain(data) {
+  return new Chainable(data);
+}
+const result = chain([1, 2, 3, 4, 5])
+  .map(x => x * 2)                     
+  .filter(x => x > 5)                  
+  .reduce((sum, val) => sum + val, 0)  
+  .value();
+console.log(result); 
+    </script>
+</body>
+</html>
